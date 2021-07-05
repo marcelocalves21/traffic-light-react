@@ -13,19 +13,55 @@ const TrafficLights = () => {
 	});
 
 	const lightRedActive = () => {
-		setGlowRed({ boxShadow: "0px 0px 50px 10px rgba(255, 255, 0, .8)" });
-		setGlowYellow({ boxShadow: " " });
-		setGlowGreen({ boxShadow: " " });
+		setGlowRed(document.querySelector(".redLight").classList.add("active"));
+		setGlowYellow(
+			document.querySelector(".yellowLight").classList.contains("active")
+				? document
+						.querySelector(".yellowLight")
+						.classList.remove("active")
+				: " "
+		);
+		setGlowGreen(
+			document.querySelector(".greenLight").classList.contains("active")
+				? document
+						.querySelector(".greenLight")
+						.classList.remove("active")
+				: " "
+		);
 	};
 	const lightYellowActive = () => {
-		setGlowRed({ boxShadow: "" });
-		setGlowYellow({ boxShadow: "0px 0px 50px 10px rgba(255, 255, 0, .8)" });
-		setGlowGreen({ boxShadow: "" });
+		setGlowRed(
+			document.querySelector(".redLight").classList.contains("active")
+				? document.querySelector(".redLight").classList.remove("active")
+				: " "
+		);
+		setGlowYellow(
+			document.querySelector(".yellowLight").classList.add("active")
+		);
+		setGlowGreen(
+			document.querySelector(".greenLight").classList.contains("active")
+				? document
+						.querySelector(".greenLight")
+						.classList.remove("active")
+				: " "
+		);
 	};
 	const lightGreenActive = () => {
-		setGlowRed({ boxShadow: "" });
-		setGlowYellow({ boxShadow: "" });
-		setGlowGreen({ boxShadow: "0px 0px 50px 10px rgba(255, 255, 0, .8)" });
+		setGlowRed(
+			document.querySelector(".redLight").classList.contains("active")
+				? document.querySelector(".redLight").classList.remove("active")
+				: " "
+		);
+		setGlowYellow(
+			document.querySelector(".yellowLight").classList.contains("active")
+				? document
+						.querySelector(".yellowLight")
+						.classList.remove("active")
+				: " "
+		);
+		setGlowGreen(
+			document.querySelector(".greenLight").classList.add("active")
+		);
 	};
 
 	const newStyle = () => {};
@@ -33,18 +69,9 @@ const TrafficLights = () => {
 		<div>
 			<div className="trafficTop"></div>
 			<div className="background">
-				<div
-					className="redLight"
-					onClick={lightRedActive}
-					style={glowRed}></div>
-				<div
-					className="yellowLight"
-					onClick={lightYellowActive}
-					style={glowYellow}></div>
-				<div
-					className="greenLight"
-					onClick={lightGreenActive}
-					style={glowGreen}></div>
+				<div className="redLight" onClick={lightRedActive}></div>
+				<div className="yellowLight" onClick={lightYellowActive}></div>
+				<div className="greenLight" onClick={lightGreenActive}></div>
 			</div>
 		</div>
 	);
