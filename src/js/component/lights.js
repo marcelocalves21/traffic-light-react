@@ -2,66 +2,12 @@ import { nodeName } from "jquery";
 import React, { useState } from "react";
 
 const TrafficLights = () => {
-	const [glowRed, setGlowRed] = useState({
-		boxShadow: " "
-	});
-	const [glowYellow, setGlowYellow] = useState({
-		boxShadow: " "
-	});
-	const [glowGreen, setGlowGreen] = useState({
-		boxShadow: " "
-	});
-
-	const lightRedActive = () => {
-		setGlowRed(document.querySelector(".redLight").classList.add("active"));
-		setGlowYellow(
-			document.querySelector(".yellowLight").classList.contains("active")
-				? document
-						.querySelector(".yellowLight")
-						.classList.remove("active")
-				: " "
-		);
-		setGlowGreen(
-			document.querySelector(".greenLight").classList.contains("active")
-				? document
-						.querySelector(".greenLight")
-						.classList.remove("active")
-				: " "
-		);
-	};
-	const lightYellowActive = () => {
-		setGlowRed(
-			document.querySelector(".redLight").classList.contains("active")
-				? document.querySelector(".redLight").classList.remove("active")
-				: " "
-		);
-		setGlowYellow(
-			document.querySelector(".yellowLight").classList.add("active")
-		);
-		setGlowGreen(
-			document.querySelector(".greenLight").classList.contains("active")
-				? document
-						.querySelector(".greenLight")
-						.classList.remove("active")
-				: " "
-		);
-	};
-	const lightGreenActive = () => {
-		setGlowRed(
-			document.querySelector(".redLight").classList.contains("active")
-				? document.querySelector(".redLight").classList.remove("active")
-				: " "
-		);
-		setGlowYellow(
-			document.querySelector(".yellowLight").classList.contains("active")
-				? document
-						.querySelector(".yellowLight")
-						.classList.remove("active")
-				: " "
-		);
-		setGlowGreen(
-			document.querySelector(".greenLight").classList.add("active")
-		);
+	const [glow, setGlow] = useState("");
+	const glowing = color => {
+		switch (color) {
+			case "red":
+				setGlow("red");
+		}
 	};
 
 	const newStyle = () => {};
@@ -69,9 +15,19 @@ const TrafficLights = () => {
 		<div>
 			<div className="trafficTop"></div>
 			<div className="background">
-				<div className="redLight" onClick={lightRedActive}></div>
-				<div className="yellowLight" onClick={lightYellowActive}></div>
-				<div className="greenLight" onClick={lightGreenActive}></div>
+				<div
+					className={"redLight " + (glow === "red" ? "active" : "")}
+					onClick={() => setGlow("red")}></div>
+				<div
+					className={
+						"yellowLight " + (glow === "yellow" ? "active" : "")
+					}
+					onClick={() => setGlow("yellow")}></div>
+				<div
+					className={
+						"greenLight " + (glow === "green" ? "active" : "")
+					}
+					onClick={() => setGlow("green")}></div>
 			</div>
 		</div>
 	);
