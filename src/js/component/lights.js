@@ -1,16 +1,7 @@
-import { nodeName } from "jquery";
 import React, { useState } from "react";
 
 const TrafficLights = () => {
 	const [glow, setGlow] = useState("");
-	const glowing = color => {
-		switch (color) {
-			case "red":
-				setGlow("red");
-		}
-	};
-
-	const newStyle = () => {};
 	return (
 		<div>
 			<div className="trafficTop"></div>
